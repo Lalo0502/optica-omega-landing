@@ -12,14 +12,10 @@ export async function POST(request: Request) {
     console.log('📧 Destinatario:', email);
     console.log('📧 API Key presente:', !!process.env.RESEND_API_KEY);
 
-    // Para desarrollo sin dominio verificado, enviamos a delivered@resend.dev
-    // Este es un email especial de Resend que siempre funciona para pruebas
-    const emailDestino = process.env.NODE_ENV === 'production' ? email : 'delivered@resend.dev';
-
     // Email para el cliente
     const { data: clientData, error: clientError } = await resend.emails.send({
-      from: 'Acme <onboarding@resend.dev>',
-      to: emailDestino,
+      from: 'Óptica Omega <contacto@optica-omega.com>',
+      to: email,
       subject: '✓ Solicitud de Cita Recibida - Óptica Omega',
       html: `
         <!DOCTYPE html>
@@ -155,13 +151,9 @@ export async function POST(request: Request) {
     // Email opcional para el admin (si está configurado)
     if (process.env.ADMIN_EMAIL) {
       try {
-        const adminEmailDestino = process.env.NODE_ENV === 'production' 
-          ? process.env.ADMIN_EMAIL 
-          : 'delivered@resend.dev';
-          
         await resend.emails.send({
-          from: 'Acme <onboarding@resend.dev>',
-          to: adminEmailDestino,
+          from: 'Óptica Omega <contacto@optica-omega.com>',
+          to: process.env.ADMIN_EMAIL,
           subject: '🔔 Nueva Solicitud de Cita - Óptica Omega',
           html: `
             <!DOCTYPE html>

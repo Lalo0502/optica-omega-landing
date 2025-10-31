@@ -16,7 +16,8 @@ export async function POST(request: Request) {
     const { data: clientData, error: clientError } = await resend.emails.send({
       from: 'Óptica Omega <contacto@optica-omega.com>',
       to: email,
-      subject: '✓ Solicitud de Cita Recibida - Óptica Omega',
+      replyTo: 'contacto@optica-omega.com',
+      subject: 'Confirmación de Solicitud de Cita',
       html: `
         <!DOCTYPE html>
         <html>
@@ -24,114 +25,140 @@ export async function POST(request: Request) {
             <meta charset="utf-8">
             <style>
               body {
-                font-family: 'Arial', sans-serif;
-                line-height: 1.6;
-                color: #333;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                line-height: 1.8;
+                color: #1f2937;
                 max-width: 600px;
                 margin: 0 auto;
-                padding: 20px;
+                padding: 0;
+                background-color: #f9fafb;
+              }
+              .container {
+                background: white;
+                margin: 40px 20px;
+                border-radius: 8px;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.08);
               }
               .header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                padding: 30px;
+                background: #667eea;
+                padding: 40px 30px;
                 text-align: center;
-                border-radius: 10px 10px 0 0;
+              }
+              .header h1 {
+                color: white;
+                margin: 0;
+                font-size: 24px;
+                font-weight: 600;
+                letter-spacing: -0.5px;
               }
               .content {
-                background: #ffffff;
-                padding: 30px;
-                border: 1px solid #e0e0e0;
-                border-top: none;
+                padding: 40px 30px;
               }
-              .info-box {
-                background: #f8f9fa;
-                padding: 20px;
-                border-radius: 8px;
-                margin: 20px 0;
+              .greeting {
+                font-size: 16px;
+                margin-bottom: 24px;
+                color: #374151;
               }
-              .info-row {
+              .details {
+                background: #f9fafb;
+                border-radius: 6px;
+                padding: 24px;
+                margin: 32px 0;
+                border: 1px solid #e5e7eb;
+              }
+              .detail-row {
                 display: flex;
-                justify-content: space-between;
-                padding: 10px 0;
-                border-bottom: 1px solid #e0e0e0;
+                padding: 12px 0;
+                border-bottom: 1px solid #e5e7eb;
               }
-              .info-row:last-child {
+              .detail-row:last-child {
                 border-bottom: none;
               }
-              .label {
-                font-weight: bold;
-                color: #667eea;
+              .detail-label {
+                font-weight: 600;
+                color: #6b7280;
+                min-width: 120px;
+                font-size: 14px;
+              }
+              .detail-value {
+                color: #1f2937;
+                font-size: 14px;
+              }
+              .notice {
+                background: #fef3c7;
+                padding: 16px;
+                border-radius: 6px;
+                border-left: 3px solid #f59e0b;
+                margin: 24px 0;
+                font-size: 14px;
+                color: #78350f;
               }
               .footer {
-                background: #f8f9fa;
-                padding: 20px;
+                background: #f9fafb;
+                padding: 24px 30px;
                 text-align: center;
-                border-radius: 0 0 10px 10px;
-                font-size: 14px;
-                color: #666;
+                font-size: 13px;
+                color: #6b7280;
+                border-top: 1px solid #e5e7eb;
               }
-              .icon {
-                font-size: 48px;
-                margin-bottom: 10px;
+              .footer-company {
+                font-weight: 600;
+                color: #1f2937;
+                margin-bottom: 8px;
               }
             </style>
           </head>
           <body>
-            <div class="header">
-              <div class="icon">👓</div>
-              <h1 style="margin: 0;">¡Solicitud Recibida!</h1>
-              <p style="margin: 10px 0 0 0;">Tu cita ha sido registrada exitosamente</p>
-            </div>
-            
-            <div class="content">
-              <p>Hola <strong>${nombre} ${apellido}</strong>,</p>
-              
-              <p>Hemos recibido tu solicitud de cita. Nuestro equipo la revisará y te contactaremos pronto para confirmar.</p>
-              
-              <div class="info-box">
-                <h3 style="margin-top: 0; color: #667eea;">📋 Detalles de tu Solicitud</h3>
-                
-                <div class="info-row">
-                  <span class="label">📅 Fecha preferida:</span>
-                  <span>${new Date(fecha_preferida).toLocaleDateString('es-MX', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}</span>
-                </div>
-                
-                <div class="info-row">
-                  <span class="label">🕐 Hora preferida:</span>
-                  <span>${hora_preferida}</span>
-                </div>
-                
-                <div class="info-row">
-                  <span class="label">📝 Motivo:</span>
-                  <span>${motivo}</span>
-                </div>
+            <div class="container">
+              <div class="header">
+                <h1>Óptica Omega</h1>
               </div>
               
-              <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 4px;">
-                <strong>⏰ ¿Qué sigue?</strong><br>
-                Nos pondremos en contacto contigo en las próximas 24 horas para confirmar tu cita.
-              </p>
+              <div class="content">
+                <div class="greeting">
+                  Hola <strong>${nombre} ${apellido}</strong>,
+                </div>
+                
+                <p>Gracias por solicitar una cita con nosotros. Hemos recibido tu solicitud y nos pondremos en contacto contigo dentro de las próximas 24 horas para confirmar.</p>
+                
+                <div class="details">
+                  <div class="detail-row">
+                    <span class="detail-label">Fecha</span>
+                    <span class="detail-value">${new Date(fecha_preferida).toLocaleDateString('es-MX', { 
+                      weekday: 'long', 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</span>
+                  </div>
+                  
+                  <div class="detail-row">
+                    <span class="detail-label">Hora</span>
+                    <span class="detail-value">${hora_preferida}</span>
+                  </div>
+                  
+                  <div class="detail-row">
+                    <span class="detail-label">Motivo</span>
+                    <span class="detail-value">${motivo}</span>
+                  </div>
+                </div>
+                
+                <div class="notice">
+                  <strong>Próximos pasos:</strong><br>
+                  Nuestro equipo revisará tu solicitud y te contactará para confirmar la disponibilidad.
+                </div>
+                
+                <p style="margin-top: 32px; color: #6b7280; font-size: 14px;">
+                  Si necesitas hacer cambios o tienes preguntas, responde a este correo.
+                </p>
+              </div>
               
-              <p>Si tienes alguna pregunta o necesitas hacer cambios, no dudes en contactarnos.</p>
-              
-              <p style="margin-top: 30px;">
-                Saludos cordiales,<br>
-                <strong>El equipo de Óptica Omega</strong>
-              </p>
-            </div>
-            
-            <div class="footer">
-              <p style="margin: 0;">
-                📍 <strong>Óptica Omega</strong><br>
-                📞 Teléfono: (123) 456-7890<br>
-                📧 Email: contacto@opticaomega.com
-              </p>
+              <div class="footer">
+                <div class="footer-company">Óptica Omega</div>
+                <div>Sonora #2515, Nuevo Laredo, Tamaulipas</div>
+                <div>contacto@optica-omega.com</div>
+              </div>
             </div>
           </body>
         </html>
@@ -154,7 +181,8 @@ export async function POST(request: Request) {
         await resend.emails.send({
           from: 'Óptica Omega <contacto@optica-omega.com>',
           to: process.env.ADMIN_EMAIL,
-          subject: '🔔 Nueva Solicitud de Cita - Óptica Omega',
+          replyTo: email,
+          subject: 'Nueva Solicitud de Cita',
           html: `
             <!DOCTYPE html>
             <html>
@@ -162,119 +190,158 @@ export async function POST(request: Request) {
                 <meta charset="utf-8">
                 <style>
                   body {
-                    font-family: 'Arial', sans-serif;
-                    line-height: 1.6;
-                    color: #333;
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                    line-height: 1.8;
+                    color: #1f2937;
                     max-width: 600px;
                     margin: 0 auto;
-                    padding: 20px;
+                    padding: 0;
+                    background-color: #f9fafb;
+                  }
+                  .container {
+                    background: white;
+                    margin: 40px 20px;
+                    border-radius: 8px;
+                    overflow: hidden;
+                    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
                   }
                   .header {
-                    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-                    color: white;
-                    padding: 30px;
+                    background: #10b981;
+                    padding: 40px 30px;
                     text-align: center;
-                    border-radius: 10px 10px 0 0;
+                  }
+                  .header h1 {
+                    color: white;
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: 600;
+                    letter-spacing: -0.5px;
+                  }
+                  .header p {
+                    color: rgba(255,255,255,0.9);
+                    margin: 8px 0 0 0;
+                    font-size: 14px;
                   }
                   .content {
-                    background: #ffffff;
-                    padding: 30px;
-                    border: 1px solid #e0e0e0;
-                    border-top: none;
+                    padding: 40px 30px;
                   }
-                  .info-box {
+                  .section-title {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #6b7280;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    margin: 0 0 16px 0;
+                  }
+                  .details {
                     background: #f0fdf4;
-                    padding: 20px;
-                    border-radius: 8px;
-                    margin: 20px 0;
-                    border-left: 4px solid #10b981;
+                    border-radius: 6px;
+                    padding: 24px;
+                    margin: 24px 0;
+                    border-left: 3px solid #10b981;
                   }
-                  .info-row {
-                    padding: 8px 0;
+                  .detail-row {
                     display: flex;
-                    gap: 10px;
+                    padding: 10px 0;
+                    gap: 16px;
                   }
-                  .label {
-                    font-weight: bold;
+                  .detail-label {
+                    font-weight: 600;
                     color: #059669;
-                    min-width: 150px;
+                    min-width: 110px;
+                    font-size: 14px;
+                  }
+                  .detail-value {
+                    color: #1f2937;
+                    font-size: 14px;
+                    flex: 1;
                   }
                   .button {
                     display: inline-block;
                     background: #10b981;
                     color: white;
-                    padding: 12px 24px;
+                    padding: 14px 28px;
                     text-decoration: none;
                     border-radius: 6px;
-                    font-weight: bold;
-                    margin-top: 20px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    margin-top: 24px;
+                  }
+                  .notice {
+                    background: #fef3c7;
+                    padding: 16px;
+                    border-radius: 6px;
+                    border-left: 3px solid #f59e0b;
+                    margin: 24px 0;
+                    font-size: 14px;
+                    color: #78350f;
                   }
                 </style>
               </head>
               <body>
-                <div class="header">
-                  <div style="font-size: 48px; margin-bottom: 10px;">🔔</div>
-                  <h1 style="margin: 0;">Nueva Solicitud de Cita</h1>
-                  <p style="margin: 10px 0 0 0;">Revisa y gestiona esta cita en el CMS</p>
-                </div>
-                
-                <div class="content">
-                  <h3 style="color: #10b981; margin-top: 0;">📋 Detalles del Cliente</h3>
-                  
-                  <div class="info-box">
-                    <div class="info-row">
-                      <span class="label">👤 Nombre:</span>
-                      <span><strong>${nombre} ${apellido}</strong></span>
-                    </div>
-                    
-                    <div class="info-row">
-                      <span class="label">📞 Teléfono:</span>
-                      <span>${body.telefono}</span>
-                    </div>
-                    
-                    <div class="info-row">
-                      <span class="label">📧 Email:</span>
-                      <span>${email}</span>
-                    </div>
-                    
-                    <div class="info-row">
-                      <span class="label">📅 Fecha preferida:</span>
-                      <span><strong>${new Date(fecha_preferida).toLocaleDateString('es-MX', { 
-                        weekday: 'long', 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric' 
-                      })}</strong></span>
-                    </div>
-                    
-                    <div class="info-row">
-                      <span class="label">🕐 Hora preferida:</span>
-                      <span><strong>${hora_preferida}</strong></span>
-                    </div>
-                    
-                    <div class="info-row">
-                      <span class="label">📝 Motivo:</span>
-                      <span>${motivo}</span>
-                    </div>
-                    
-                    ${body.notas ? `
-                    <div class="info-row">
-                      <span class="label">📌 Notas:</span>
-                      <span>${body.notas}</span>
-                    </div>
-                    ` : ''}
+                <div class="container">
+                  <div class="header">
+                    <h1>Nueva Solicitud de Cita</h1>
+                    <p>Gestiona esta cita en el CMS</p>
                   </div>
                   
-                  <p style="background: #fef3c7; padding: 15px; border-left: 4px solid #f59e0b; border-radius: 4px;">
-                    <strong>⚠️ Acción Requerida:</strong><br>
-                    Revisa esta solicitud en el CMS y confirma la cita con el cliente.
-                  </p>
-                  
-                  <center>
-                    <a href="${process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'}/citas" class="button">
-                      Ver en el CMS →
-                    </a>
-                  </center>
+                  <div class="content">
+                    <h3 class="section-title">Información del Cliente</h3>
+                    
+                    <div class="details">
+                      <div class="detail-row">
+                        <span class="detail-label">Nombre</span>
+                        <span class="detail-value"><strong>${nombre} ${apellido}</strong></span>
+                      </div>
+                      
+                      <div class="detail-row">
+                        <span class="detail-label">Teléfono</span>
+                        <span class="detail-value">${body.telefono}</span>
+                      </div>
+                      
+                      <div class="detail-row">
+                        <span class="detail-label">Email</span>
+                        <span class="detail-value">${email}</span>
+                      </div>
+                      
+                      <div class="detail-row">
+                        <span class="detail-label">Fecha</span>
+                        <span class="detail-value"><strong>${new Date(fecha_preferida).toLocaleDateString('es-MX', { 
+                          weekday: 'long', 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}</strong></span>
+                      </div>
+                      
+                      <div class="detail-row">
+                        <span class="detail-label">Hora</span>
+                        <span class="detail-value"><strong>${hora_preferida}</strong></span>
+                      </div>
+                      
+                      <div class="detail-row">
+                        <span class="detail-label">Motivo</span>
+                        <span class="detail-value">${motivo}</span>
+                      </div>
+                      
+                      ${body.notas ? `
+                      <div class="detail-row">
+                        <span class="detail-label">Notas</span>
+                        <span class="detail-value">${body.notas}</span>
+                      </div>
+                      ` : ''}
+                    </div>
+                    
+                    <div class="notice">
+                      <strong>Acción Requerida:</strong> Revisa y confirma esta cita con el cliente.
+                    </div>
+                    
+                    <center>
+                      <a href="${process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'}/citas" class="button">
+                        Abrir CMS
+                      </a>
+                    </center>
+                  </div>
                 </div>
               </body>
             </html>

@@ -3,17 +3,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, Calendar, Sparkles } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 
 export default function Hero() {
   const [videoError, setVideoError] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Detectar si es móvil
-    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
-  }, []);
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -23,7 +17,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background - Video con respaldo de imagen */}
       <div className="absolute inset-0 overflow-hidden">
-        {!videoError && !isMobile ? (
+        {!videoError ? (
           <video
             autoPlay
             loop
@@ -36,7 +30,7 @@ export default function Hero() {
             <source src="/Header.mp4" type="video/mp4" />
           </video>
         ) : (
-          // Imagen de respaldo para móvil o si el video falla
+          // Imagen de respaldo solo si el video falla al cargar
           <Image
             src="/armazon1.jpg"
             alt="Óptica Omega"

@@ -33,7 +33,7 @@ const beneficios = [
 
 export default function Beneficios() {
   return (
-    <section className="py-16 bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
+    <section className="py-16 bg-linear-to-br from-primary/5 via-primary/10 to-primary/5">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

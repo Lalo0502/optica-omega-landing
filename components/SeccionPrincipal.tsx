@@ -91,7 +91,7 @@ export default function SeccionPrincipal() {
               </h3>
             </div>
 
-            <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20 mb-4">
+            <Card className="p-6 bg-linear-to-br from-primary/10 to-primary/5 border-primary/20 mb-4">
               <div className="flex items-start gap-3">
                 <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg shrink-0">
                   50%
@@ -105,7 +105,7 @@ export default function SeccionPrincipal() {
               </div>
             </Card>
 
-            <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+            <Card className="p-6 bg-linear-to-br from-primary/10 to-primary/5 border-primary/20">
               <div className="flex items-start gap-3">
                 <div className="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center font-bold shrink-0">
                   <Eye className="w-6 h-6" />
@@ -142,7 +142,7 @@ export default function SeccionPrincipal() {
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                     <h4 className="font-bold text-lg">
                       {armazones[currentIndex].nombre}

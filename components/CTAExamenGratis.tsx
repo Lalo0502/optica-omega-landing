@@ -10,7 +10,7 @@ export default function CTAExamenGratis() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-r from-neutral-900 to-neutral-800 dark:from-neutral-950 dark:to-neutral-900 text-white relative overflow-hidden">
+    <section className="py-24 bg-linear-to-r from-neutral-900 to-neutral-800 dark:from-neutral-950 dark:to-neutral-900 text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full blur-3xl" />

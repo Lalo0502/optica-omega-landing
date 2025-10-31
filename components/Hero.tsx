@@ -3,27 +3,51 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, Calendar, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Hero() {
+  const [videoError, setVideoError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Detectar si es móvil
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+  }, []);
+
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Video Background - Completamente visible */}
+      {/* Background - Video con respaldo de imagen */}
       <div className="absolute inset-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/Header.mp4" type="video/mp4" />
-        </video>
+        {!videoError && !isMobile ? (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setVideoError(true)}
+          >
+            <source src="/Header.mp4" type="video/mp4" />
+          </video>
+        ) : (
+          // Imagen de respaldo para móvil o si el video falla
+          <Image
+            src="/armazon1.jpg"
+            alt="Óptica Omega"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+        )}
         {/* Overlay más oscuro para mejor legibilidad */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/50 to-black/70" />
       </div>
 
       {/* Content */}
@@ -57,7 +81,7 @@ export default function Hero() {
               <span className="block text-white drop-shadow-2xl">
                 Tu Visión,
               </span>
-              <span className="block bg-gradient-to-r from-primary via-cyan-400 to-primary bg-clip-text text-transparent animate-pulse">
+              <span className="block bg-linear-to-r from-primary via-cyan-400 to-primary bg-clip-text text-transparent animate-pulse">
                 Nuestra Misión
               </span>
             </motion.h1>

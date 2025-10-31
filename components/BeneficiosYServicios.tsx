@@ -31,7 +31,7 @@ export default function BeneficiosYServicios() {
   return (
     <section
       id="servicios"
-      className="py-16 bg-gradient-to-br from-primary/5 via-white to-primary/5"
+      className="py-16 bg-linear-to-br from-primary/5 via-white to-primary/5"
     >
       <div className="container mx-auto px-4">
         {/* Título Principal */}

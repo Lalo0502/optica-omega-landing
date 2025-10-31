@@ -47,9 +47,9 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-neutral-400 mt-1" />
                 <span className="text-neutral-300">
-                  Sonora #2515, Col. Jardin
+                  Sonora #2515
                   <br />
-                  Nuevo Laredo, Tamps.
+                  Nuevo Laredo, Tamaulipas
                 </span>
               </div>
             </div>

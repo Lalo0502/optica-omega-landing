@@ -52,7 +52,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight mb-4 sm:mb-6"
             >
               <span className="block text-white drop-shadow-2xl">
                 Tu Visión,
@@ -66,20 +66,22 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-white mb-4 leading-relaxed drop-shadow-lg max-w-3xl mx-auto"
+              className="text-base sm:text-lg md:text-2xl text-white mb-3 sm:mb-4 leading-relaxed drop-shadow-lg max-w-3xl mx-auto px-4"
             >
-              <span className="font-bold text-primary bg-white/10 px-3 py-1 rounded-md backdrop-blur-sm">
+              <span className="font-bold text-primary bg-white/10 px-2 sm:px-3 py-1 rounded-md backdrop-blur-sm inline-block mb-2 sm:mb-0">
                 Examen visual GRATIS
               </span>{" "}
-              con tu compra. Lentes graduados de alta calidad y armazones de
-              moda para todos los estilos.
+              <span className="block sm:inline mt-2 sm:mt-0">
+                con tu compra. Lentes graduados de alta calidad y armazones de
+                moda para todos los estilos.
+              </span>
             </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.45 }}
-              className="text-lg text-white/90 mb-10 drop-shadow-md max-w-2xl mx-auto"
+              className="text-sm sm:text-base md:text-lg text-white/90 mb-6 sm:mb-10 drop-shadow-md max-w-2xl mx-auto px-4"
             >
               Desde monturas clásicas hasta las últimas tendencias en diseño.
             </motion.p>
@@ -88,20 +90,20 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4"
             >
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white text-lg px-10 py-7 shadow-2xl shadow-primary/50 hover:shadow-primary/70 transition-all hover:scale-105 font-bold"
+                className="bg-primary hover:bg-primary/90 text-white text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-2xl shadow-primary/50 hover:shadow-primary/70 transition-all hover:scale-105 font-bold w-full sm:w-auto"
                 onClick={() => scrollToSection("citas")}
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Agendar Cita
               </Button>
-              <a href="tel:8677122210">
+              <a href="tel:8677122210" className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className="bg-white hover:bg-white/90 text-neutral-900 text-lg px-10 py-7 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-bold w-full sm:w-auto"
+                  className="bg-white hover:bg-white/90 text-neutral-900 text-base sm:text-lg px-8 sm:px-10 py-6 sm:py-7 shadow-2xl hover:shadow-white/50 transition-all hover:scale-105 font-bold w-full"
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Llamar Ahora
@@ -114,29 +116,29 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
+              className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 max-w-2xl mx-auto px-4"
             >
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all">
-                <div className="text-4xl font-black text-primary drop-shadow-md mb-2">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/20 hover:bg-white/20 transition-all">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-primary drop-shadow-md mb-1 sm:mb-2">
                   30+
                 </div>
-                <div className="text-sm text-white/90 font-medium">
+                <div className="text-xs sm:text-sm text-white/90 font-medium">
                   Años de Experiencia
                 </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all">
-                <div className="text-4xl font-black text-primary drop-shadow-md mb-2">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/20 hover:bg-white/20 transition-all">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-primary drop-shadow-md mb-1 sm:mb-2">
                   10K+
                 </div>
-                <div className="text-sm text-white/90 font-medium">
+                <div className="text-xs sm:text-sm text-white/90 font-medium">
                   Clientes Satisfechos
                 </div>
               </div>
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all">
-                <div className="text-4xl font-black text-primary drop-shadow-md mb-2">
+              <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-white/20 hover:bg-white/20 transition-all">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-black text-primary drop-shadow-md mb-1 sm:mb-2">
                   100%
                 </div>
-                <div className="text-sm text-white/90 font-medium">
+                <div className="text-xs sm:text-sm text-white/90 font-medium">
                   Garantía
                 </div>
               </div>

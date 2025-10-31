@@ -102,19 +102,19 @@ export default function Citas() {
   };
 
   return (
-    <section id="citas" className="py-16 bg-white">
+    <section id="citas" className="py-12 sm:py-16 bg-white">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-neutral-900">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-neutral-900">
             Agenda tu <span className="text-primary">Cita</span>
           </h2>
-          <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-neutral-600 max-w-2xl mx-auto px-4">
             Visítanos o completa el formulario y nos pondremos en contacto
           </p>
         </motion.div>
@@ -125,31 +125,39 @@ export default function Citas() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-8"
+          className="max-w-4xl mx-auto mb-6 sm:mb-8"
         >
-          <div className="bg-primary/10 border border-primary/20 rounded-lg p-6">
-            <div className="flex flex-wrap justify-center gap-6 text-center md:text-left">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">📍</span>
+          <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 sm:p-6">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 sm:gap-6 text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-xl sm:text-2xl">📍</span>
                 <div>
-                  <p className="font-semibold text-neutral-900">Dirección</p>
-                  <p className="text-sm text-neutral-600">
+                  <p className="font-semibold text-neutral-900 text-sm sm:text-base">
+                    Dirección
+                  </p>
+                  <p className="text-xs sm:text-sm text-neutral-600">
                     Sonora #2515, Col. Jardin
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">📞</span>
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-xl sm:text-2xl">📞</span>
                 <div>
-                  <p className="font-semibold text-neutral-900">Teléfono</p>
-                  <p className="text-sm text-neutral-600">867 712 2210</p>
+                  <p className="font-semibold text-neutral-900 text-sm sm:text-base">
+                    Teléfono
+                  </p>
+                  <p className="text-xs sm:text-sm text-neutral-600">
+                    867 712 2210
+                  </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">⏰</span>
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <span className="text-xl sm:text-2xl">⏰</span>
                 <div>
-                  <p className="font-semibold text-neutral-900">Horario</p>
-                  <p className="text-sm text-neutral-600">
+                  <p className="font-semibold text-neutral-900 text-sm sm:text-base">
+                    Horario
+                  </p>
+                  <p className="text-xs sm:text-sm text-neutral-600">
                     Lun-Vie: 10AM-6PM | Sáb: 10AM-5PM
                   </p>
                 </div>
@@ -159,25 +167,25 @@ export default function Citas() {
         </motion.div>
 
         {/* Grid 2 Columnas: Mapa + Formulario */}
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           {/* Columna Izquierda - Mapa COMPLETO */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="h-full min-h-[600px]"
+            className="h-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px]"
           >
             <div className="h-full w-full rounded-lg overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.123456789!2d-99.123456!3d19.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDA3JzI0LjQiTiA5OcKwMDcnMjQuNCJX!5e0!3m2!1ses!2smx!4v+52 8677122210"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3596.8217899875944!2d-99.53206492397753!3d27.50446557631486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x866176d8e8f8f8f8%3A0x1234567890abcdef!2sSonora%202515%2C%20Nuevo%20Laredo%2C%20Tamps.!5e0!3m2!1ses-419!2smx!4v1234567890123!5m2!1ses-419!2smx"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Ubicación de Óptica Omega"
+                title="Ubicación de Óptica Omega - Sonora #2515, Nuevo Laredo, Tamaulipas"
               ></iframe>
             </div>
           </motion.div>
@@ -189,26 +197,28 @@ export default function Citas() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <Card className="p-8">
-              ..
+            <Card className="p-4 sm:p-6 md:p-8">
               {success ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-8"
+                  className="text-center py-6 sm:py-8"
                 >
-                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-2xl font-bold mb-2">
+                  <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-3 sm:mb-4" />
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2">
                     ¡Solicitud Enviada!
                   </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400">
+                  <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 px-4">
                     Hemos recibido tu solicitud de cita. Nos pondremos en
                     contacto contigo pronto para confirmar.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-4 sm:space-y-6"
+                >
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
                       <Label htmlFor="nombre">Nombre *</Label>
                       <Input
@@ -260,10 +270,13 @@ export default function Citas() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="fecha_preferida">
-                        <Calendar className="w-4 h-4 inline mr-2" />
+                      <Label
+                        htmlFor="fecha_preferida"
+                        className="text-sm sm:text-base"
+                      >
+                        <Calendar className="w-3 h-3 sm:w-4 sm:h-4 inline mr-2" />
                         Fecha Preferida *
                       </Label>
                       <Input
@@ -274,11 +287,15 @@ export default function Citas() {
                         onChange={handleChange}
                         required
                         min={new Date().toISOString().split("T")[0]}
+                        className="text-sm sm:text-base"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="hora_preferida">
-                        <Clock className="w-4 h-4 inline mr-2" />
+                      <Label
+                        htmlFor="hora_preferida"
+                        className="text-sm sm:text-base"
+                      >
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4 inline mr-2" />
                         Hora Preferida *
                       </Label>
                       <Input
@@ -288,6 +305,7 @@ export default function Citas() {
                         value={formData.hora_preferida}
                         onChange={handleChange}
                         required
+                        className="text-sm sm:text-base"
                       />
                     </div>
                   </div>

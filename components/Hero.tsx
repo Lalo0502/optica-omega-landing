@@ -3,43 +3,26 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Phone, Calendar, Sparkles } from "lucide-react";
-import { useState } from "react";
-import Image from "next/image";
 
 export default function Hero() {
-  const [videoError, setVideoError] = useState(false);
-
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background - Video con respaldo de imagen */}
+      {/* Background - Video */}
       <div className="absolute inset-0 overflow-hidden">
-        {!videoError ? (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 w-full h-full object-cover"
-            onError={() => setVideoError(true)}
-          >
-            <source src="/Header.mp4" type="video/mp4" />
-          </video>
-        ) : (
-          // Imagen de respaldo solo si el video falla al cargar
-          <Image
-            src="/armazon1.jpg"
-            alt="Óptica Omega"
-            fill
-            className="object-cover"
-            priority
-            quality={90}
-          />
-        )}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/Header.mp4" type="video/mp4" />
+        </video>
         {/* Overlay más oscuro para mejor legibilidad */}
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-black/50 to-black/70" />
       </div>
